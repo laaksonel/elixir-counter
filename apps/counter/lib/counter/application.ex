@@ -8,10 +8,8 @@ defmodule Counter.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the PubSub system
-      {Phoenix.PubSub, name: Counter.PubSub}
-      # Start a worker by calling: Counter.Worker.start_link(arg)
-      # {Counter.Worker, arg}
+      # Start a worker by calling: Counter.Counter.start_link(arg)
+      {Counter.Counter, 10}
     ]
 
     Supervisor.start_link(children, strategy: :one_for_one, name: Counter.Supervisor)

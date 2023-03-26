@@ -3,3 +3,9 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
+
+@layer components {
+  .counter-button {
+    @apply text-white text-xl bg-sky-600 px-7 py-2 hover:bg-sky-900 rounded
+  }
+}

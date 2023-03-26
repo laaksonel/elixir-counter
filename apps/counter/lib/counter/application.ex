@@ -8,7 +8,6 @@ defmodule Counter.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start a worker by calling: Counter.Counter.start_link(arg)
       {Counter.Counter, 10}
     ]
 

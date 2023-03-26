@@ -1,41 +1,12 @@
-<.header>
-  Listing Counters
-  <:actions>
-    <.link patch={~p"/counters/new"}>
-      <.button>New Counter</.button>
-    </.link>
-  </:actions>
-</.header>
+<div class="flex flex-col items-center justify-center h-screen bg-gray-300">
+  <h1 class="text-4xl font-medium text-gray-700">Counter</h1>
 
-<.table
-  id="counters"
-  rows={@streams.counters}
-  row_click={fn {_id, counter} -> JS.navigate(~p"/counters/#{counter}") end}
->
-  <:col :let={{_id, counter}} label="Name"><%= counter.name %></:col>
-  <:action :let={{_id, counter}}>
-    <div class="sr-only">
-      <.link navigate={~p"/counters/#{counter}"}>Show</.link>
-    </div>
-    <.link patch={~p"/counters/#{counter}/edit"}>Edit</.link>
-  </:action>
-  <:action :let={{id, counter}}>
-    <.link
-      phx-click={JS.push("delete", value: %{id: counter.id}) |> hide("##{id}")}
-      data-confirm="Are you sure?"
-    >
-      Delete
-    </.link>
-  </:action>
-</.table>
+  <span class="m-5 text-3xl">
+    <%= @val %>
+  </span>
 
-<.modal :if={@live_action in [:new, :edit]} id="counter-modal" show on_cancel={JS.patch(~p"/counters")}>
-  <.live_component
-    module={CounterWeb.CounterLive.FormComponent}
-    id={@counter.id || :new}
-    title={@page_title}
-    action={@live_action}
-    counter={@counter}
-    patch={~p"/counters"}
-  />
-</.modal>
+  <section>
+    <button class="counter-button" phx-click="dec">-</button>
+    <button class="counter-button" phx-click="inc">+</button>
+  </section>
+</div>

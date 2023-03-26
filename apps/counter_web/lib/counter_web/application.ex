@@ -8,6 +8,7 @@ defmodule CounterWeb.Application do
   @impl true
   def start(_type, _args) do
     children = [
+      {Phoenix.PubSub, name: CounterWeb.PubSub},
       # Start the Telemetry supervisor
       CounterWeb.Telemetry,
       # Start the Endpoint (http/https)

@@ -19,7 +19,7 @@ config :counter_web, CounterWeb.Endpoint,
     formats: [html: CounterWeb.ErrorHTML, json: CounterWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Counter.PubSub,
+  pubsub_server: CounterWeb.PubSub,
   live_view: [signing_salt: "UPK/wvV4"]
 
 # Configure esbuild (the version is required)

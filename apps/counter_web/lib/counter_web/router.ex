@@ -4,7 +4,6 @@ defmodule CounterWeb.Router do
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
-    plug :fetch_live_flash
     plug :put_root_layout, {CounterWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
@@ -17,9 +16,7 @@ defmodule CounterWeb.Router do
   scope "/", CounterWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-
-    live "/counters", CounterLive.Index, :index
+    live "/", CounterLive.Index, :index
   end
 
   # Other scopes may use custom stacks.

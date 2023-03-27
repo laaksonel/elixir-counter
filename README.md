@@ -1,3 +1,3 @@
 # Counter in Elixir/OTP
 
-Just an overengineered counter to demo Elixri/OTP and Phoenix.
+Just an overengineered counter app to demo Elixir/OTP and Phoenix.
